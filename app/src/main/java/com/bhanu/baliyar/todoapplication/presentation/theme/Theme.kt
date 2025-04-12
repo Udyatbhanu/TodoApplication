@@ -1,6 +1,5 @@
-package com.bhanu.baliyar.todoapplication.ui.theme
+package com.bhanu.baliyar.todoapplication.presentation.theme
 
-import android.app.Activity
 import android.os.Build
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.MaterialTheme
