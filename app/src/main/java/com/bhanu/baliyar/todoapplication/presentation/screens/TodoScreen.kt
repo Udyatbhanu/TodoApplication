@@ -1,7 +1,6 @@
 package com.bhanu.baliyar.todoapplication.presentation.screens
 
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
@@ -15,21 +14,26 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
+
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
 
 data class TodoItem(val id: Int, val title: String, val isCompleted: Boolean)
 
-val todoItems = listOf<TodoItem>(
-    TodoItem(id = 1, title = "Sleep", isCompleted = false),
-    TodoItem(id = 2, title = "Walk", isCompleted = false)
-)
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun TodoScreen() {
+fun TodoScreen(viewModel: TodoScreenViewModel = hiltViewModel()) {
+//    val todoItems = remember {
+//        mutableStateListOf<TodoItem>(
+//            TodoItem(id = 1, title = "Sleep", isCompleted = false),
+//            TodoItem(id = 2, title = "Walk", isCompleted = true)
+//        )
+//    }
 
+    val todoItems = viewModel.todoItems
     Scaffold(
         topBar = {
             TopAppBar(
@@ -48,7 +52,15 @@ fun TodoScreen() {
             ) {
 
                 items(todoItems) { item ->
-                    TodoItem(todo = item)
+                    TodoItem(todo = item, onCheckedChange = { value ->
+                      viewModel.updateTodo(item.id, value)
+                    })
+//                    TodoItem(todo = item, onCheckedChange = { value ->
+//                        val index = todoItems.indexOfFirst { it.id == item.id }
+//                        if (index != -1) {
+//                            todoItems[index] = todoItems[index].copy(isCompleted = value)
+//                        }
+//                    })
                 }
             }
         }
@@ -57,7 +69,7 @@ fun TodoScreen() {
 }
 
 @Composable
-fun TodoItem(todo: TodoItem) {
+fun TodoItem(todo: TodoItem, onCheckedChange: (Boolean) -> Unit) {
     Row(
         verticalAlignment = Alignment.CenterVertically,
         modifier = Modifier
@@ -65,10 +77,9 @@ fun TodoItem(todo: TodoItem) {
             .padding(vertical = 8.dp)
     ) {
         Checkbox(
-            checked = false,
-            onCheckedChange = { },
-
-            )
+            checked = todo.isCompleted,
+            onCheckedChange = onCheckedChange
+        )
         Text(text = todo.title)
     }
 
