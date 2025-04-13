@@ -1,4 +1,4 @@
-package com.bhanu.baliyar.todoapplication.data
+package com.bhanu.baliyar.todoapplication.core
 
 import android.app.Application
 

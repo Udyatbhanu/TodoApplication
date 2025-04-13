@@ -5,12 +5,6 @@ import androidx.lifecycle.ViewModel
 import com.bhanu.baliyar.todoapplication.data.TodoRepository
 
 class TodoScreenViewModel(private val repository: TodoRepository) : ViewModel() {
-
-//    private val _todoItems = mutableStateListOf(
-//            TodoItem(id = 1, title = "Sleep", isCompleted = false),
-//            TodoItem(id = 2, title = "Walk", isCompleted = false)
-//        )
-
     private val _todoItems = mutableStateListOf<TodoItem>().apply {
         addAll(repository.getTodos())
     }

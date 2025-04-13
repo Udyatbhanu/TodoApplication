@@ -1,7 +1,8 @@
-package com.bhanu.baliyar.todoapplication.data
+package com.bhanu.baliyar.todoapplication.core
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import com.bhanu.baliyar.todoapplication.data.TodoRepository
 import com.bhanu.baliyar.todoapplication.presentation.screens.TodoScreenViewModel
 
 class TodoViewModelFactory(

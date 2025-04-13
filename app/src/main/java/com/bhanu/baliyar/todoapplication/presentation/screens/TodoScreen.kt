@@ -21,8 +21,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
-import com.bhanu.baliyar.todoapplication.data.TodoApplication
-import com.bhanu.baliyar.todoapplication.data.TodoViewModelFactory
+import com.bhanu.baliyar.todoapplication.core.TodoApplication
+import com.bhanu.baliyar.todoapplication.core.TodoViewModelFactory
 
 
 data class TodoItem(val id: Int, val title: String, val isCompleted: Boolean)
