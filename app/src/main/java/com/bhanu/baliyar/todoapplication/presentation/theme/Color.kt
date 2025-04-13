@@ -1,4 +1,4 @@
-package com.bhanu.baliyar.todoapplication.ui.theme
+package com.bhanu.baliyar.todoapplication.presentation.theme
 
 import androidx.compose.ui.graphics.Color
 
