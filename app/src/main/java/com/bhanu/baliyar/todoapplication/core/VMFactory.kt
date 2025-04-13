@@ -10,7 +10,7 @@ class VMFactory(private val creators: Map<Class<out ViewModel>, () -> ViewModel>
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         val creator = creators[modelClass]
             ?: creators.entries.firstOrNull() { modelClass.isAssignableFrom(it.key) }?.value
-            ?: (tthrow IllegalArgumentException ("Unknown VM"))
+            ?: (throw IllegalArgumentException ("Unknown VM"))
         return creator.invoke() as T
     }
 }
