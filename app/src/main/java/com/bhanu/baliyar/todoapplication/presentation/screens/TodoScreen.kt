@@ -31,7 +31,7 @@ data class TodoItem(val id: Int, val todo: String, val isCompleted: Boolean)
 fun TodoScreen() {
 
     val context = LocalContext.current.applicationContext as TodoApplication
-    val viewModel : TodoViewModel = viewModel (factory =  context.container.viewModelFactory)
+    val viewModel: TodoViewModel = viewModel(factory = context.container.viewModelFactory)
     Scaffold(
         topBar = {
             TopAppBar(
@@ -58,7 +58,6 @@ fun TodoScreen() {
 @Composable
 fun ToDoContent(viewModel: TodoViewModel) {
     val todoItems = viewModel.state
-
     LazyColumn {
         items(todoItems) { item ->
             Row(modifier = Modifier.padding(8.dp), verticalAlignment = Alignment.CenterVertically) {
@@ -68,9 +67,7 @@ fun ToDoContent(viewModel: TodoViewModel) {
                 Text(text = item.todo)
             }
         }
-
     }
-
 }
 
 
